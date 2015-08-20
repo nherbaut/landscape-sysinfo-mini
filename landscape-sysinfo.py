@@ -13,14 +13,14 @@
 # 2014-10-08 V1.1 jw, survive without swap
 # 2014-10-13 V1.2 jw, survive without network
 
-import sys,os,time,posix,glob,utmp
-
+import sys,os,time,posix,glob,utmp,subprocess
+from subprocess import PIPE
 _version_ = '1.2'
 
 def dev_addr(device):
   """ find the local ip address on the given device """
   if device is None: return None
-  for l in os.popen('ip route list dev '+device):
+  for l in subprocess.Popen(['ip route list dev '+device],shell=True,stdout=PIPE,stderr=PIPE).stdout:
     seen=''
     for a in l.split():
       if seen == 'src': return a
@@ -34,6 +34,10 @@ def default_dev():
     if a[1] == '00000000':
       return a[0]
   return None
+
+def all_iface():
+  """ return all the interfaces """
+  return  [(interface, dev_addr(interface)) for interface in set([a.split()[0]  for a in open('/proc/net/route').readlines()])  if dev_addr(interface) is not None]
 
 def utmp_count():
   u = utmp.UtmpRecord()
@@ -68,7 +72,9 @@ if meminfo['SwapTotal:'] == 0: swapperc = '---'
 print "  System information as of %s\n" % time.asctime()
 print "  System load:  %-5.2f                Processes:           %d" % (loadav, processes)
 print "  Usage of /:   %-20s Users logged in:     %d"% (rootusage, users)
-print "  Memory usage: %-4s                 IP address for %s: %s" % (memperc, defaultdev, ipaddr)
+print "  Memory usage: %-4s                 " % memperc
+for interface, ip in all_iface():
+  print "                                     IP address for %s: %s" % ( interface, ip )
 print "  Swap usage:   %s" % (swapperc)
 
 sys.exit(0)
