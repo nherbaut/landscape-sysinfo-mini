@@ -17,5 +17,5 @@ https://github.com/nherbaut/landscape-sysinfo-mini
 - Show packages update:
 https://nickcharlton.net/posts/debian-ubuntu-dynamic-motd.html
 
-I just did the laundry :)
+I just combined the two to fit my needs :)
 Enjoy
