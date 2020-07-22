@@ -5,6 +5,6 @@ a trivial re-implementation of the sysinfo printout shown on debian at boot time
 
 The script now shows updates to install and how many of them are security updates. 
 
-Sample Output
+## Sample Output
 
 ![Sample Output](https://github.com/spithash/trunk/blob/master/landscape-sysinfo.jpg?raw=true)
