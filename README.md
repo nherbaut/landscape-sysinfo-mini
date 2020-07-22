@@ -8,3 +8,14 @@ The script now shows updates to install and how many of them are security update
 ## Sample Output
 
 ![Sample Output](https://github.com/spithash/trunk/blob/master/landscape-sysinfo.jpg?raw=true)
+
+### Credits
+Original script from:
+https://github.com/jnweiger/landscape-sysinfo-mini
+Modified script from:
+https://github.com/nherbaut/landscape-sysinfo-mini
+Show packages update:
+https://nickcharlton.net/posts/debian-ubuntu-dynamic-motd.html
+
+I just did the laundry :)
+Enjoy
