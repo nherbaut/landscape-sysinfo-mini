@@ -12,6 +12,8 @@ The script now shows updates to install and how many of them are security update
 ### Credits
 - Original script from:
 https://github.com/jnweiger/landscape-sysinfo-mini
+- Show all interface IPs:
+https://github.com/nherbaut/landscape-sysinfo-mini
 - Show packages update:
 https://nickcharlton.net/posts/debian-ubuntu-dynamic-motd.html
 
